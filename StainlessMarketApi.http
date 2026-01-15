@@ -1,0 +1,6 @@
+@StainlessMarketApi_HostAddress = http://localhost:5115
+
+GET {{StainlessMarketApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
