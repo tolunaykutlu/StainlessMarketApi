@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fason Listesi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <h2>Fason Listesi</h2>
+            <table id="fasonTable">
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Firma</th>
+                        <th>Kalite / Yüzey</th>
+                        <th>Genişlik</th>
+                        <th>Uzunluk</th>
+                        <th>Miktar</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button style="margin-top:16px; width:100%; background:#2d6cdf;" onclick="openFasonModal()">Fason
+                Ekle</button>
+        </div>
+    </div>
+    <div id="fasonModal" class="modal-bg">
+        <div class="modal-box">
+            <h3>Fason Ekle</h3>
+            <form id="fasonForm">
+                <div class="form-row">
+                    <label>Firma</label>
+                    <input name="CompanyName" required>
+                </div>
+                <div class="form-row">
+                    <label>Kalite</label>
+                    <input name="Quality" required>
+                </div>
+                <div class="form-row">
+                    <label>Yüzey</label>
+                    <input name="SurfaceFinish" required>
+                </div>
+                <div class="form-row">
+                    <label>Genişlik</label>
+                    <input name="Width" required>
+                </div>
+                <div class="form-row">
+                    <label>Uzunluk</label>
+                    <input name="Length" required>
+                </div>
+                <div class="form-row">
+                    <label>Miktar</label>
+                    <input name="Quantity" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="primary">Kaydet</button>
+                    <button type="button" onclick="closeFasonModal()">İptal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function openFasonModal() {
+            document.getElementById('fasonModal').style.display = 'flex';
+        }
+        function closeFasonModal() {
+            document.getElementById('fasonModal').style.display = 'none';
+        }
+        async function loadData() {
+            const fasonRes = await fetch('http://localhost:5115/Fason');
+            const fasonlar = await fasonRes.json();
+            renderFasonTable(fasonlar);
+        }
+        function renderFasonTable(data) {
+            const tbody = document.querySelector('#fasonTable tbody');
+            tbody.innerHTML = data.map(item => `
+                <tr>
+                    <td>${item.entryDate}</td>
+                    <td>${item.companyName || '-'}</td>
+                    <td>${item.quality || '-'} ${item.surfaceFinish || '-'}</td>
+                    <td>${item.width || '-'}</td>
+                    <td>${item.length || '-'}</td>
+                    <td>${item.quantity + "kg" || '-'}</td>
+                </tr>
+            `).join('');
+        }
+        window.onload = function () {
+            loadData();
+            document.getElementById('fasonForm').onsubmit = async function (e) {
+                e.preventDefault();
+                const form = e.target;
+                const data = {
+                    CompanyName: form.CompanyName.value,
+                    Quality: form.Quality.value,
+                    SurfaceFinish: form.SurfaceFinish.value,
+                    Width: form.Width.value,
+                    Length: form.Length.value,
+                    Quantity: form.Quantity.value
+                };
+                await fetch('http://localhost:5115/Fason', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                closeFasonModal();
+                loadData();
+                form.reset();
+            };
+        };
+    </script>
+</body>
+
+</html>

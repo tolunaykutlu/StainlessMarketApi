@@ -3,243 +3,190 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Stainless Market Panel</title>
+    <title>PASLANMAZ CRM</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --primary: #2d6cdf;
-            --secondary: #f4f4f4;
-            --accent: #28a745;
-            --danger: #dc3545;
-            --border: #e0e0e0;
-            --radius: 12px;
-        }
-
-        html {
-            box-sizing: border-box;
-        }
-
-        *,
-        *:before,
-        *:after {
-            box-sizing: inherit;
-        }
-
         body {
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-            background: var(--secondary);
-            margin: 0;
-            padding: 0;
+            background: linear-gradient(120deg, #eaf1fb 0%, #f4f4f4 100%);
             min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100vw;
+            background: var(--primary);
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar-content {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .navbar-title {
+            color: #fff;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 18px 0;
+            text-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .navbar-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .navbar-links a:hover {
+            background: #174a9c;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+        }
+
+        .main-card {
+            background: #fff;
+            margin: 60px auto 0 auto;
+            max-width: 480px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.13);
+            padding: 38px 32px 32px 32px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .main {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 32px auto;
-        }
-
-        .container {
-            background: white;
-            padding: 32px 24px 22px 24px;
-            border-radius: var(--radius);
-            flex: 1 1 350px;
-            min-width: 320px;
-            box-shadow: 0 6px 32px rgba(44, 62, 80, 0.10);
-            transition: box-shadow 0.2s, transform 0.15s;
-        }
-
-        .container:hover {
-            box-shadow: 0 12px 40px rgba(44, 62, 80, 0.16);
-            transform: translateY(-2px) scale(1.01);
-        }
-
-        h2 {
-            margin-top: 0;
+        .main-card h2 {
             color: var(--primary);
-            font-size: 1.4rem;
-            letter-spacing: 0.5px;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
         }
 
-        table {
+        .main-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            background: #fafbfc;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 1px 4px rgba(44, 62, 80, 0.04);
         }
 
-        th,
-        td {
-            border: 1px solid var(--border);
-            padding: 12px 10px;
-            text-align: left;
-            font-size: 1.05rem;
-            vertical-align: middle;
+        .main-card ul li {
+            margin-bottom: 18px;
+            text-align: center;
         }
 
-        th {
+        .main-card ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .main-card ul a {
+            display: inline-block;
             background: var(--primary);
             color: #fff;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 500;
+            padding: 12px 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+            transition: background 0.2s, box-shadow 0.2s;
         }
 
-        tr:nth-child(even) td {
-            background: #f6f8fa;
-        }
-
-        tr:hover td {
-            background: #e0eaff;
-        }
-
-        button {
-            cursor: pointer;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 7px 14px;
-            border-radius: 6px;
-            font-size: 1.05rem;
-            margin-right: 4px;
-            box-shadow: 0 1px 3px rgba(44, 62, 80, 0.08);
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        button:last-child {
-            margin-right: 0;
-        }
-
-        button:hover {
-            background: #218838;
-            transform: translateY(-2px) scale(1.04);
-        }
-
-        button.danger {
-            background: var(--danger);
-        }
-
-        button.danger:hover {
-            background: #b52a37;
-        }
-
-        @media (max-width: 900px) {
-            .main {
-                flex-direction: column;
-                gap: 20px;
-                max-width: 98vw;
-            }
-
-            .container {
-                min-width: unset;
-            }
+        .main-card ul a:hover {
+            background: #174a9c;
+            box-shadow: 0 4px 16px rgba(44, 62, 80, 0.13);
         }
 
         @media (max-width: 600px) {
-            .container {
-                padding: 14px 4px 10px 4px;
+            .main-card {
+                padding: 18px 8px 18px 8px;
             }
 
-            th,
-            td {
-                font-size: 0.95rem;
-                padding: 7px 4px;
+            .main-card h2 {
+                font-size: 1.3rem;
             }
 
-            h2 {
-                font-size: 1.1rem;
+            .navbar-title {
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="navbar-content ">
+            <div class="navbar-title ">PASLANMAZ CRM</div>
 
-    <div class="main">
-        <div class="container">
-            <h2>Stok Listesi</h2>
-            <table id="stokTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Kalite</th>
-                        <th>Miktar</th>
-                        <th>İşlem</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
         </div>
-        <div class="container">
-            <h2>Fason Listesi</h2>
-            <table id="fasonTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Firma</th>
-                        <th>Kalite / Yüzey</th>
-                        <th>Genişlik</th>
-                        <th>Uzunluk</th>
-                        <th>Miktar</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+    </nav>
+    <div class="main-card" id="login-card">
+        <h2>Admin Girişi</h2>
+        <form id="login-form">
+            <div style="width:100%;margin-bottom:18px;">
+                <input type="text" id="username" placeholder="Kullanıcı Adı"
+                    style="width:100%;padding:10px;font-size:1rem;border-radius:6px;border:1px solid #d0d0d0;">
+            </div>
+            <div style="width:100%;margin-bottom:18px;">
+                <input type="password" id="password" placeholder="Şifre"
+                    style="width:100%;padding:10px;font-size:1rem;border-radius:6px;border:1px solid #d0d0d0;">
+            </div>
+            <button type="submit"
+                style="width:100%;background:var(--primary);color:#fff;padding:12px 0;font-size:1.1rem;border:none;border-radius:8px;box-shadow:0 2px 8px rgba(44,62,80,0.10);font-weight:500;cursor:pointer;transition:background 0.2s;">Giriş
+                Yap</button>
+            <div id="login-error" style="color:#e74c3c;margin-top:16px;display:none;text-align:center;font-weight:500;">
+            </div>
+        </form>
     </div>
-
+    <div class="main-card" id="panel-card" style="display:none;">
+        <h2>Panel Ana Sayfa</h2>
+        <ul>
+            <li><a href="stok.html">Stok Listesi</a></li>
+            <li><a href="fason.html">Fason Listesi</a></li>
+        </ul>
+    </div>
     <script>
-        // API'den verileri çeken fonksiyon
+        // Mock admin credentials
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "282828";
 
-        async function loadData() {
-            const stokRes = await fetch('http://localhost:5115/Stok');
-            const stoklar = await stokRes.json();
-            renderStokTable(stoklar);
+        const loginForm = document.getElementById("login-form");
+        const loginError = document.getElementById("login-error");
+        const loginCard = document.getElementById("login-card");
+        const panelCard = document.getElementById("panel-card");
 
-            const fasonRes = await fetch('http://localhost:5115/Fason');
-            const fasonlar = await fasonRes.json();
-            renderFasonTable(fasonlar);
-        }
-
-        function renderStokTable(data) {
-            const tbody = document.querySelector('#stokTable tbody');
-            tbody.innerHTML = data.map(item => `
-                <tr>
-                    <td>${item.Id}</td>
-                    <td>${item.Quality || '-'}</td>
-                    <td>${item.Quantity || '-'}</td>
-                    <td>
-                        <button title="Düzenle">✏️</button>
-                        <button class="danger" title="Sil">🗑️</button>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        function renderFasonTable(data) {
-            const tbody = document.querySelector('#fasonTable tbody');
-            tbody.innerHTML = data.map(item => `
-                <tr>
-                    <td>${item.Id}</td>
-                    <td>${item.CompanyName || '-'}</td>
-                    <td>${item.Quality || '-'} / ${item.SurfaceFinish || '-'}</td>
-                    <td>${item.Width || '-'}</td>
-                    <td>${item.Length || '-'}</td>
-                    <td>${item.Quantity || '-'}</td>
-                </tr>
-            `).join('');
-        }
-
-        window.onload = loadData;
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+            if (username === ADMIN_USER && password === ADMIN_PASS) {
+                loginCard.style.display = "none";
+                panelCard.style.display = "flex";
+                loginError.style.display = "none";
+            } else {
+                loginError.textContent = "Kullanıcı adı veya şifre yanlış.";
+                loginError.style.display = "block";
+            }
+        });
     </script>
 </body>
 

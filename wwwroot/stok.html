@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stok Listesi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <h2>Stok Listesi</h2>
+            <table id="stokTable">
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Kalite/Yüzey</th>
+                        <th>Kalınlık</th>
+                        <th>Genişlik</th>
+                        <th>Uzunluk</th>
+                        <th>Miktar</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button style="margin-top:16px; width:100%;" onclick="openStokModal()">Stok Ekle</button>
+        </div>
+    </div>
+    <div id="stokModal" class="modal-bg">
+        <div class="modal-box">
+            <h3>Stok Ekle</h3>
+            <form id="stokForm">
+                <div class="form-row">
+                    <label>Kalite</label>
+                    <input name="Quality" required>
+                </div>
+                <div class="form-row">
+                    <label>Miktar</label>
+                    <input name="Quantity" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="primary">Kaydet</button>
+                    <button type="button" onclick="closeStokModal()">İptal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function openStokModal() {
+            document.getElementById('stokModal').style.display = 'flex';
+        }
+        function closeStokModal() {
+            document.getElementById('stokModal').style.display = 'none';
+        }
+        async function loadData() {
+            const stokRes = await fetch('http://localhost:5115/Stok');
+            const stoklar = await stokRes.json();
+            renderStokTable(stoklar);
+        }
+        function renderStokTable(data) {
+            const tbody = document.querySelector('#stokTable tbody');
+            tbody.innerHTML = data.map(item => `
+                <tr>
+                    <td>${item.entryDate}</td>
+                    <td>${item.quality || '-'} ${item.surfaceFinish || '-'}</td>
+                    <td>${item.thickness || '-'}</td>
+                    <td>${item.width || '-'}</td>
+                    <td>${item.length || '-'}</td>
+                    <td>${item.quantity + " kg" || '-'}</td>
+                    <td>
+                        <button title="Düzenle">✏️</button>
+                        <button class="danger" title="Sil">🗑️</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        window.onload = function () {
+            loadData();
+            document.getElementById('stokForm').onsubmit = async function (e) {
+                e.preventDefault();
+                const form = e.target;
+                const data = {
+                    Quality: form.Quality.value,
+                    Quantity: form.Quantity.value
+                };
+                await fetch('http://localhost:5115/Stok', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                closeStokModal();
+                loadData();
+                form.reset();
+            };
+        };
+    </script>
+</body>
+
+</html>
