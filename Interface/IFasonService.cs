@@ -1,10 +1,11 @@
+using StainlessMarketApi.Dtos;
 using StainlessMarketApi.Entities;
 
 public interface IFasonService
 {
-    Task<IEnumerable<FasonProductEntity>> GetAllStokAsync();
-    Task<FasonProductEntity?> GetByIdAsync(int id);
-    Task<FasonProductEntity> CreateAsync(FasonProductEntity fasonProduct);
-    Task<FasonProductEntity?> UpdateAsync(int id, FasonProductEntity updatedProduct);
+    Task<IEnumerable<FasonProductDto>> GetAllFasonAsync();
+    Task<FasonProductDto> GetByIdAsync(int id);
+    Task<FasonProductDto> CreateAsync(FasonProductDto fasonProduct);
+    Task<FasonProductDto?> UpdateAsync(int id, FasonProductDto updatedProduct);
     Task<bool> DeleteAsync(int id);
 }

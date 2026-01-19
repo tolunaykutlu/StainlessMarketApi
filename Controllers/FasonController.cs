@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using StainlessMarketApi.Dtos;
 using StainlessMarketApi.Entities;
 using StainlessMarketApi.Services;
 
@@ -16,14 +17,27 @@ public class FasonController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var data = await _fasonService.GetAllStokAsync();
+        var data = await _fasonService.GetAllFasonAsync();
         return Ok(data); // Unutmayın, parantez içi dolu olmalı :)
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var data = await _fasonService.GetByIdAsync(id);
+        return Ok(data);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] FasonProductEntity product)
+    public async Task<IActionResult> Create([FromBody] FasonProductDto product)
     {
         var result = await _fasonService.CreateAsync(product);
+        return Ok(result);
+    }
+    [HttpPut("id")]
+    public async Task<IActionResult> Update(int id, [FromBody] FasonProductDto updatedProduct)
+    {
+        var result = await _fasonService.UpdateAsync(id, updatedProduct);
+        if (result == null) return NotFound("Böyle bir ürün yok");
         return Ok(result);
     }
 

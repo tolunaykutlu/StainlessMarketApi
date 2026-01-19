@@ -3,9 +3,10 @@ using StainlessMarketApi.Entities;
 
 namespace StainlessMarketApi.Dtos
 {
-    public class StokProductDto
+    public class FasonProductDto
     {
-
+        public string CompanyName { get; set; } = string.Empty;
+        public string ProcessType { get; set; } = "Boy Kesim";
         public string Quality { get; set; } = string.Empty;
         public string SurfaceFinish { get; set; } = "BA"; // birşey girilmeze BA olarak kalacak
         public decimal Thickness { get; set; }
