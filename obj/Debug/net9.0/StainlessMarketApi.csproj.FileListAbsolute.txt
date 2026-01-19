@@ -154,4 +154,10 @@ C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\StainlessMar
 C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\StainlessMarketApi.genruntimeconfig.cache
 C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\ref\StainlessMarketApi.dll
 C:\Users\tolun\Desktop\projeler\StainlessMarketApi\bin\Debug\net9.0\StainlessMarketApi.staticwebassets.runtime.json
-C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\compressed\uimk2yo707-f7jspk70wr.gz
+C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\StainlessMarketApi.sourcelink.json
+C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\compressed\orum7d4erl-ty6yc1v9hz.gz
+C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\compressed\uimk2yo707-yv15nz0nfw.gz
+C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\compressed\gs1ej348th-79ieb3ogx6.gz
+C:\Users\tolun\Desktop\projeler\StainlessMarketApi\obj\Debug\net9.0\compressed\fytyiddu4q-len1503rrc.gz
+C:\Users\tolun\Desktop\projeler\StainlessMarketApi\bin\Debug\net9.0\AutoMapper.dll
+C:\Users\tolun\Desktop\projeler\StainlessMarketApi\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

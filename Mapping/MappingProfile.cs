@@ -1,0 +1,13 @@
+using AutoMapper;
+using StainlessMarketApi.Dtos;
+using StainlessMarketApi.Entities;
+
+public class MappingProfile : Profile
+{
+    public MappingProfile()
+    {
+        CreateMap<StokProductEntities, StokProductDto>().ReverseMap();
+
+        /* CreateMap<FasonProductEntity, StokProductDto>().ReverseMap(); */
+    }
+}

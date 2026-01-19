@@ -1,11 +1,15 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using StainlessMarketApi.Data;
+using StainlessMarketApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Controllers
 builder.Services.AddControllers();
-
+builder.Services.AddScoped<IStokService, StokService>();
+builder.Services.AddScoped<IFasonService, FasonService>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 // SQLite
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=SanayiProjem.db"));

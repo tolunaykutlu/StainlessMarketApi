@@ -1,60 +1,37 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using StainlessMarketApi.Data;
 using StainlessMarketApi.Entities;
+using StainlessMarketApi.Services;
 
 [ApiController]
 [Route("[controller]")]
-
 public class FasonController : ControllerBase
 {
-    private readonly AppDbContext _context;
-    public FasonController(AppDbContext context)//constructor
+    private readonly IFasonService _fasonService;
+
+    public FasonController(IFasonService fasonService)
     {
-        _context = context;
+        _fasonService = fasonService;
     }
 
     [HttpGet]
-
-    public async Task<IActionResult> GetAllFasonProcesses()
+    public async Task<IActionResult> GetAll()
     {
-        var fasonProducts = await _context.FasonProducts.ToListAsync();
-        return Ok(fasonProducts);
+        var data = await _fasonService.GetAllStokAsync();
+        return Ok(data); // Unutmayın, parantez içi dolu olmalı :)
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateFasonProcess([FromBody] FasonProductEntity fasonProductEntity)
+    public async Task<IActionResult> Create([FromBody] FasonProductEntity product)
     {
-        _context.FasonProducts.Add(fasonProductEntity);
-        await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetAllFasonProcesses), new { id = fasonProductEntity.Id }, fasonProductEntity);
+        var result = await _fasonService.CreateAsync(product);
+        return Ok(result);
     }
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateFasonProcess(int id, [FromBody] FasonProductEntity updatedFason)
-    {
-        var existingFason = await _context.FasonProducts.FindAsync(id);
-        if (existingFason == null)
-        {
-            return NotFound();
-        }
 
-        existingFason.CompanyName = updatedFason.CompanyName;
-        existingFason.ProcessType = updatedFason.ProcessType;
-
-        await _context.SaveChangesAsync();
-        return Ok("ürün güncellendi");
-    }
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteFasonProcess(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var fasonProcessToDel = await _context.FasonProducts.FindAsync(id);
-        if (fasonProcessToDel == null)
-        {
-            return NotFound("ürün bulunamadı");
-
-        }
-        _context.FasonProducts.Remove(fasonProcessToDel);
-        await _context.SaveChangesAsync();
-        return Ok("ürün silindi");
+        var success = await _fasonService.DeleteAsync(id);
+        if (!success) return NotFound();
+        return NoContent();
     }
 }
