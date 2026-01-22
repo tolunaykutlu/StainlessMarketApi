@@ -23,8 +23,17 @@ namespace StainlessMarketApi.Services
         public async Task<FasonProductDto> CreateAsync(FasonProductDto fasonProduct)
         {
             var product = _mapper.Map<FasonProductEntity>(fasonProduct);
+            await _context.FasonProducts.AddAsync(product);
             await _context.SaveChangesAsync();
             return _mapper.Map<FasonProductDto>(product);
+        }
+        public async Task<IEnumerable<FasonProductDto>> GetOneCompanyAllWork(string companyName)
+        {
+            var products = await _context.FasonProducts
+                .Where(f => f.CompanyName == companyName)
+                .ToListAsync();
+
+            return _mapper.Map<IEnumerable<FasonProductDto>>(products);
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -38,7 +47,7 @@ namespace StainlessMarketApi.Services
             await _context.SaveChangesAsync();
             return true;
         }
-
+        //TODO: quantity int olmalı
         public async Task<IEnumerable<FasonProductDto>> GetAllFasonAsync()
         {
             var products = await _context.FasonProducts.ToListAsync();
@@ -66,6 +75,8 @@ namespace StainlessMarketApi.Services
             existingProduct.Width = updatedProduct.Width;
             existingProduct.Length = updatedProduct.Length;
             existingProduct.Quantity = updatedProduct.Quantity;
+
+            await _context.FasonProducts.AddAsync(existingProduct);
 
             await _context.SaveChangesAsync();
 

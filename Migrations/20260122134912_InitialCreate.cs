@@ -24,8 +24,8 @@ namespace StainlessMarketApi.Migrations
                     Thickness = table.Column<decimal>(type: "TEXT", nullable: false),
                     Width = table.Column<decimal>(type: "TEXT", nullable: false),
                     Length = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<string>(type: "TEXT", nullable: false),
-                    EntryDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    EntryDate = table.Column<DateOnly>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,8 +44,8 @@ namespace StainlessMarketApi.Migrations
                     Thickness = table.Column<decimal>(type: "TEXT", nullable: false),
                     Width = table.Column<decimal>(type: "TEXT", nullable: false),
                     Length = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<string>(type: "TEXT", nullable: false),
-                    EntryDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    EntryDate = table.Column<DateOnly>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

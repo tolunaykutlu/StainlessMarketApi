@@ -13,11 +13,11 @@ public abstract class BaseEntity
     public decimal Thickness { get; set; }
     public decimal Width { get; set; }
     public decimal Length { get; set; } = 0;
-    public string Quantity { get; set; } = "0";
-    public DateTime EntryDate { get; set; }
+    public int Quantity { get; set; } = 0;
+    public DateOnly EntryDate { get; set; }
 
     protected BaseEntity()
     {
-        EntryDate = DateTime.Parse(DateTime.Now.ToString("dd-MM-yyyy"));
+        EntryDate = DateOnly.FromDateTime(DateTime.Now);
     }
 }

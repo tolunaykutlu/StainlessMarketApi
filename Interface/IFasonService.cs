@@ -5,6 +5,8 @@ public interface IFasonService
 {
     Task<IEnumerable<FasonProductDto>> GetAllFasonAsync();
     Task<FasonProductDto> GetByIdAsync(int id);
+
+    Task<IEnumerable<FasonProductDto>> GetOneCompanyAllWork(string companyName);
     Task<FasonProductDto> CreateAsync(FasonProductDto fasonProduct);
     Task<FasonProductDto?> UpdateAsync(int id, FasonProductDto updatedProduct);
     Task<bool> DeleteAsync(int id);

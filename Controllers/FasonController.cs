@@ -17,8 +17,8 @@ public class FasonController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var data = await _fasonService.GetAllFasonAsync();
-        return Ok(data); // Unutmayın, parantez içi dolu olmalı :)
+        var allData = await _fasonService.GetAllFasonAsync();
+        return Ok(allData); // Unutmayın, parantez içi dolu olmalı :)
     }
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
@@ -26,19 +26,25 @@ public class FasonController : ControllerBase
         var data = await _fasonService.GetByIdAsync(id);
         return Ok(data);
     }
+    [HttpGet("companyName")]
+    public async Task<IActionResult> GetOneCompanyAllWork(string companyName)
+    {
+        var allWorkForOneCompany = await _fasonService.GetOneCompanyAllWork(companyName);
+        return Ok(allWorkForOneCompany);
+    }
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] FasonProductDto product)
     {
-        var result = await _fasonService.CreateAsync(product);
-        return Ok(result);
+        var createData = await _fasonService.CreateAsync(product);
+        return Ok(createData);
     }
     [HttpPut("id")]
     public async Task<IActionResult> Update(int id, [FromBody] FasonProductDto updatedProduct)
     {
-        var result = await _fasonService.UpdateAsync(id, updatedProduct);
-        if (result == null) return NotFound("Böyle bir ürün yok");
-        return Ok(result);
+        var updatingProduct = await _fasonService.UpdateAsync(id, updatedProduct);
+        if (updatingProduct == null) return NotFound("Böyle bir ürün yok");
+        return Ok(updatingProduct);
     }
 
     [HttpDelete("{id}")]

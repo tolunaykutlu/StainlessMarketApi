@@ -11,7 +11,7 @@ using StainlessMarketApi.Data;
 namespace StainlessMarketApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260113091132_InitialCreate")]
+    [Migration("20260122134912_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -30,7 +30,7 @@ namespace StainlessMarketApi.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("EntryDate")
+                    b.Property<DateOnly>("EntryDate")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Length")
@@ -44,9 +44,8 @@ namespace StainlessMarketApi.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Quantity")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SurfaceFinish")
                         .IsRequired()
@@ -69,7 +68,7 @@ namespace StainlessMarketApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("EntryDate")
+                    b.Property<DateOnly>("EntryDate")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Length")
@@ -83,9 +82,8 @@ namespace StainlessMarketApi.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Quantity")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SurfaceFinish")
                         .IsRequired()

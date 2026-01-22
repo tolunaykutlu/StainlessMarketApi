@@ -5,13 +5,13 @@ namespace StainlessMarketApi.Dtos
 {
     public class StokProductDto
     {
-
+        public int Id { get; set; }
         public string Quality { get; set; } = string.Empty;
         public string SurfaceFinish { get; set; } = "BA"; // birşey girilmeze BA olarak kalacak
         public decimal Thickness { get; set; }
         public decimal Width { get; set; }
         public decimal Length { get; set; }
-        public string Quantity { get; set; } = string.Empty;
+        public int Quantity { get; set; } = 0;
         public DateTime EntryDate { get; set; }
     }
 
