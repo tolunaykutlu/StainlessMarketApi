@@ -14,10 +14,10 @@ public abstract class BaseEntity
     public decimal Width { get; set; }
     public decimal Length { get; set; } = 0;
     public int Quantity { get; set; } = 0;
-    public DateOnly EntryDate { get; set; }
+    public DateTime EntryDate { get; set; }
 
     protected BaseEntity()
     {
-        EntryDate = DateOnly.FromDateTime(DateTime.Now);
+        EntryDate = DateTime.Now;
     }
 }

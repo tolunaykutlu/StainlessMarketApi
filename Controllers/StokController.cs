@@ -1,17 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using StainlessMarketApi.Data;
 using StainlessMarketApi.Entities;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using StainlessMarketApi.Dtos;
 
+
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 // Stok işlemleri için API controller'ı
 public class StokController : ControllerBase
 {
     private readonly IStokService _stokService;
-    
+
 
 
     public StokController(IStokService stokService)

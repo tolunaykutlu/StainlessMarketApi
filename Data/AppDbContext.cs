@@ -12,4 +12,5 @@ public class AppDbContext : DbContext
 
     public DbSet<Entities.StokProductEntities> StokProducts { get; set; }
     public DbSet<Entities.FasonProductEntity> FasonProducts { get; set; }
+    public DbSet<Entities.UserEntity> Users { get; set; }
 }

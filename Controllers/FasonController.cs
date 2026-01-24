@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using StainlessMarketApi.Dtos;
 using StainlessMarketApi.Entities;
 using StainlessMarketApi.Services;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class FasonController : ControllerBase
 {
     private readonly IFasonService _fasonService;

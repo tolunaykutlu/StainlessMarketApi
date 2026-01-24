@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tolun\\Desktop\\projeler\\StainlessMarketApi\\StainlessMarketApi.csproj": {}
+    "C:\\Users\\tolun\\Desktop\\donet deneme\\StainlessMarketApi\\StainlessMarketApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tolun\\Desktop\\projeler\\StainlessMarketApi\\StainlessMarketApi.csproj": {
+    "C:\\Users\\tolun\\Desktop\\donet deneme\\StainlessMarketApi\\StainlessMarketApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tolun\\Desktop\\projeler\\StainlessMarketApi\\StainlessMarketApi.csproj",
+        "projectUniqueName": "C:\\Users\\tolun\\Desktop\\donet deneme\\StainlessMarketApi\\StainlessMarketApi.csproj",
         "projectName": "StainlessMarketApi",
-        "projectPath": "C:\\Users\\tolun\\Desktop\\projeler\\StainlessMarketApi\\StainlessMarketApi.csproj",
+        "projectPath": "C:\\Users\\tolun\\Desktop\\donet deneme\\StainlessMarketApi\\StainlessMarketApi.csproj",
         "packagesPath": "C:\\Users\\tolun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tolun\\Desktop\\projeler\\StainlessMarketApi\\obj\\",
+        "outputPath": "C:\\Users\\tolun\\Desktop\\donet deneme\\StainlessMarketApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -70,7 +74,11 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[10.1.0, )"
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[7.0.12, )"
             }
           },
           "imports": [

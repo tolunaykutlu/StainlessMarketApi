@@ -14,7 +14,7 @@ namespace StainlessMarketApi.Dtos
         public decimal Width { get; set; }
         public decimal Length { get; set; }
         public int Quantity { get; set; } = 0;
-        public DateOnly EntryDate { get; set; }
+        public DateTime EntryDate { get; set; }
     }
 
     // StokProductDto: Stok ürünlerinin temel bilgilerini (kalite, ölçüler, miktar, giriş tarihi) 
