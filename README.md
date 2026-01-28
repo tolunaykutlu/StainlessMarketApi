@@ -27,29 +27,30 @@ StainlessMarketApi/
 
 ## Kurulum
 1. **Projeyi klonlayın:**
-   
+   ```bash
    git clone <repo-url>
    cd StainlessMarketApi
-  
+   ```
 2. **Bağımlılıkları yükleyin:**
-   
+   ```bash
    dotnet restore
-  
+   ```
 3. **Veritabanı migrasyonlarını uygulayın:**
-   
+   ```bash
    dotnet ef database update
-  
+   ```
 4. **Projeyi başlatın:**
- 
+   ```bash
    dotnet run
-   
+   ```
 
 ## API Kullanımı
 - Temel endpointler için `Controllers` klasörüne bakabilirsiniz.
 - JWT ile kimlik doğrulama gerektiren endpointler mevcuttur.
 - Örnek istekler için `StainlessMarketApi.http` dosyasını kullanabilirsiniz.
 
-
+## Katkı Sağlama
+Katkıda bulunmak için lütfen bir fork oluşturun ve pull request gönderin.
 
 ## Lisans
 Bu proje MIT lisansı ile lisanslanmıştır.
