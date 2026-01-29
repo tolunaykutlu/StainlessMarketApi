@@ -49,8 +49,6 @@ StainlessMarketApi/
 - JWT ile kimlik doğrulama gerektiren endpointler mevcuttur.
 - Örnek istekler için `StainlessMarketApi.http` dosyasını kullanabilirsiniz.
 
-## Katkı Sağlama
-Katkıda bulunmak için lütfen bir fork oluşturun ve pull request gönderin.
 
 ## Lisans
 Bu proje MIT lisansı ile lisanslanmıştır.
