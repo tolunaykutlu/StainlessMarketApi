@@ -22,8 +22,8 @@ public class AuthController : ControllerBase
     public async Task<ActionResult<UserDto>> Register(UserRegisterDto request)
     {
         // Gelen veriyi Service metodunun istediği formata (UserDto) çeviriyoruz
-        var userDto = new UserDto 
-        { 
+        var userDto = new UserDto
+        {
             Username = request.Username
         };
 
@@ -40,7 +40,7 @@ public class AuthController : ControllerBase
     {
         // Servis katmanında giriş yapmayı dene ve token iste.
         var token = await _authService.LoginAsync(request.Username, request.Password);
-        
+
         // Eğer hata mesajı geldiyse kullanıcıya hata döndür.
         if (token == "Kullanıcı bulunamadı." || token == "Şifre yanlış.")
         {
@@ -48,6 +48,6 @@ public class AuthController : ControllerBase
         }
 
         // Başarılıysa Token'ı kullanıcıya ver.
-        return Ok(token); // 200 OK + Token
+        return Ok(new { token = token }); // 200 OK + tokeni json olarak veriyoruz { token: "deger" }
     }
 }

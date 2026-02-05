@@ -40,7 +40,7 @@ public class AuthService : IAuthService
         // 3. Veritabanı nesnesini (Entity) oluşturuyoruz.
         var user = new UserEntity
         {
-            username = userDto.Username,
+            UserName = userDto.Username,
             PasswordHash = passwordHash, // Şifreli hali
             PasswordSalt = passwordSalt  // Şifreleme anahtarı
         };
@@ -56,7 +56,7 @@ public class AuthService : IAuthService
     public async Task<string> LoginAsync(string username, string password)
     {
         // 1. Kullanıcıyı veritabanında ara.
-        var user = await _context.Users.FirstOrDefaultAsync(x => x.username == username);
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == username);
         if (user == null)
         {
             return "Kullanıcı bulunamadı."; // Kullanıcı yoksa, işlem biter.
@@ -76,7 +76,7 @@ public class AuthService : IAuthService
     // YARDIMCI METOT: Kullanıcı var mı kontrolü
     private async Task<bool> UserExists(string username)
     {
-        return await _context.Users.AnyAsync(x => x.username == username);
+        return await _context.Users.AnyAsync(x => x.UserName == username);
     }
 
     // YARDIMCI METOT: Şifre Hashleme (Kriptolama)
@@ -108,8 +108,8 @@ public class AuthService : IAuthService
         // 1. Token'ın içine koyacağımız bilgiler (Claims)
         List<Claim> claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.username), // Kullanıcı adı
-            new Claim(ClaimTypes.NameIdentifier, user.id.ToString()) // ID
+            new Claim(ClaimTypes.Name, user.UserName), // Kullanıcı adı
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()) // ID
         };
 
         // 2. Güvenlik Anahtarı (appsettings.json dosyasındaki gizli şifre)

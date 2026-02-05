@@ -9,5 +9,6 @@ public class MappingProfile : Profile
         CreateMap<StokProductEntities, StokProductDto>().ReverseMap();
 
         CreateMap<FasonProductEntity, FasonProductDto>().ReverseMap();
+       // CreateMap<UserEntity, UserDto>().ReverseMap();
     }
 }

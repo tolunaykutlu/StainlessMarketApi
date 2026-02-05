@@ -1,12 +1,12 @@
 namespace StainlessMarketApi.Entities;
 
-public class UserEntity
+public class UserEntity : BaseEntity
 {
-    public int id { get; set; }
-    public string username { get; set; }
+
+    required public string UserName { get; set; }
 
     // Şifreleri açık tutmak yerine Hash ve Salt olarak saklıyoruz.
-    public byte[] PasswordHash { get; set; }
-    public byte[] PasswordSalt { get; set; }
+    required public byte[] PasswordHash { get; set; }
+    required public byte[] PasswordSalt { get; set; }
 
 }
