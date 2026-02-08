@@ -24,7 +24,7 @@ public class AuthController : ControllerBase
         // Gelen veriyi Service metodunun istediği formata (UserDto) çeviriyoruz
         var userDto = new UserDto
         {
-            Username = request.Username
+            UserName = request.Username
         };
 
         // Servis katmanına gönderip işi orada hallediyoruz.

@@ -46,7 +46,7 @@ namespace StainlessMarketApi.Services
         /// <returns>Eklenen stok ürünü.</returns>
         public async Task<StokProductDto> CreateAsync(StokProductDto productDto)
         {
-            var createStokPro = _mapper.Map<StokProductEntities>(productDto);//Dto'yu Entity'e dönüştür
+            var createStokPro = _mapper.Map<StokProductEntity>(productDto);//Dto'yu Entity'e dönüştür
             await _context.StokProducts.AddAsync(createStokPro);//Entity'yi Context'e ekle
             await _context.SaveChangesAsync();
 

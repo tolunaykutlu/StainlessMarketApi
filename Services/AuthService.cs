@@ -40,7 +40,7 @@ public class AuthService : IAuthService
         // 3. Veritabanı nesnesini (Entity) oluşturuyoruz.
         var user = new UserEntity
         {
-            UserName = userDto.Username,
+            UserName = userDto.UserName,
             PasswordHash = passwordHash, // Şifreli hali
             PasswordSalt = passwordSalt  // Şifreleme anahtarı
         };

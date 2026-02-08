@@ -11,8 +11,8 @@ using StainlessMarketApi.Data;
 namespace StainlessMarketApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260124090336_AddUserTable")]
-    partial class AddUserTable
+    [Migration("20260208080505_AddUserToDb")]
+    partial class AddUserToDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,7 +62,7 @@ namespace StainlessMarketApi.Migrations
                     b.ToTable("FasonProducts");
                 });
 
-            modelBuilder.Entity("StainlessMarketApi.Entities.StokProductEntities", b =>
+            modelBuilder.Entity("StainlessMarketApi.Entities.StokProductEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,9 +102,12 @@ namespace StainlessMarketApi.Migrations
 
             modelBuilder.Entity("StainlessMarketApi.Entities.UserEntity", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
@@ -114,11 +117,11 @@ namespace StainlessMarketApi.Migrations
                         .IsRequired()
                         .HasColumnType("BLOB");
 
-                    b.Property<string>("username")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
