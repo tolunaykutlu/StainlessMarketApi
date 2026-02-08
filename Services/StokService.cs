@@ -67,14 +67,16 @@ namespace StainlessMarketApi.Services
 
 
 
-            existingProduct.Thickness = updatedProduct.Thickness;
-            existingProduct.Width = updatedProduct.Width;
-            existingProduct.Length = updatedProduct.Length;
-            existingProduct.Quantity = updatedProduct.Quantity;
+           
+             // AutoMapper, DTO'daki property isimleriyle Entity'dekileri eşleştirip günceller.
+             _mapper.Map(updatedProduct, existingProduct);
 
             await _context.SaveChangesAsync();
-            _mapper.Map<StokProductDto>(updatedProduct);
+            
+            // Bu satırın sonucu bir yere atanmadığı için boşa çalışıyordu.
+            // _mapper.Map<StokProductDto>(updatedProduct);
             return _mapper.Map<StokProductDto>(existingProduct);
+            
         }
 
         /// <summary>

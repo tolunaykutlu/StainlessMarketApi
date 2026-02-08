@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StainlessMarketApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+447a206fb0f62f921f6fccc129bffa1d3c0edec8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1be5b65eaa13070036fcbf7aaea86eba98afbd39")]
 [assembly: System.Reflection.AssemblyProductAttribute("StainlessMarketApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StainlessMarketApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

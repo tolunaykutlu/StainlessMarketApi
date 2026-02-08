@@ -27,7 +27,7 @@ public class AuthService : IAuthService
     public async Task<UserDto> RegisterAsync(UserDto userDto, string password)
     {
         // 1. Önce böyle bir kullanıcı adı var mı diye kontrol ediyoruz.
-        if (await UserExists(userDto.Username))
+        if (await UserExists(userDto.UserName))
         {
             throw new Exception("Kullanıcı zaten mevcut.");
         }
